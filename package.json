@@ -1,0 +1,41 @@
+{
+  "name": "family-calendar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Family calendar web app: period tracker, Vietnamese lunar calendar, death-anniversary (giỗ) and Catholic liturgical reminders, and a world time buddy. Runs on Cloudflare Workers, stores data in the user's own Google Sheet.",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "predev": "node scripts/ensure-dist.mjs",
+    "dev": "concurrently -k -n web,worker -c magenta,cyan \"npm:dev:web\" \"npm:dev:worker\"",
+    "dev:web": "vite",
+    "dev:worker": "wrangler dev --port 8787",
+    "build": "npm run typecheck && vite build",
+    "preview": "npm run build && wrangler dev --port 8787",
+    "typecheck": "wrangler types && tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.worker.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "deploy": "npm run build && wrangler deploy",
+    "gen:key": "node scripts/gen-key.mjs",
+    "cf:types": "wrangler types"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "typescript": "~5.9.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8",
+    "wrangler": "^4.30.0"
+  }
+}

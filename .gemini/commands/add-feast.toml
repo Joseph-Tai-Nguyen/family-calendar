@@ -1,0 +1,5 @@
+description = "Add a fixed liturgical celebration"
+prompt = """
+Add a fixed celebration to FIXED in src/shared/liturgical/liturgical.ts using: {{args}}
+Use a stable snake_case key, an existing rank and colour, and a region array if regional. Add tests in tests/liturgical.test.ts (normal year + impeded by a Sunday). Run `npm test`.
+"""

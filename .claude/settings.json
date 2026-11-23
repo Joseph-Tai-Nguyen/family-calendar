@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm test)",
+      "Bash(npm run test*)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run build)",
+      "Bash(npm run dev*)",
+      "Bash(npx vitest*)",
+      "Bash(npx tsc*)",
+      "Bash(npx wrangler types*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)"
+    ],
+    "deny": [
+      "Read(./.dev.vars)",
+      "Read(./.dev.vars.*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(npx wrangler secret*)",
+      "Bash(npm run deploy*)",
+      "Bash(npx wrangler deploy*)"
+    ]
+  }
+}

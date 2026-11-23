@@ -1,0 +1,5 @@
+description = "Add a Vietnamese lunar observance"
+prompt = """
+Add an entry to VN_LUNAR_HOLIDAYS in src/shared/lunar/vietnamese-holidays.ts using: {{args}}
+Use day: 'last' for the last day of a month. Add a test in tests/lunar.test.ts. Run `npm test`.
+"""

@@ -1,0 +1,9 @@
+{
+  "name": "Family Calendar · Lịch Gia Đình",
+  "short_name": "Family Cal",
+  "start_url": "/#/calendar",
+  "display": "standalone",
+  "background_color": "#fff7fa",
+  "theme_color": "#d6487e",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

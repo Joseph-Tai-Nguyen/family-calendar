@@ -1,0 +1,7 @@
+description = "Full pre-commit check (tests, typecheck, build, docs drift)"
+prompt = """
+1. Run `npm test`, `npm run typecheck`, `npm run build`.
+2. If src/shared/schema.ts, env vars or wrangler.jsonc changed (see `git diff --stat`), ensure docs/data-model.md, docs/deployment.md and README.md are updated.
+3. Ensure new UI strings exist in both `en` and `vi` in src/app/i18n.ts.
+Report a short pass/fail checklist.
+"""

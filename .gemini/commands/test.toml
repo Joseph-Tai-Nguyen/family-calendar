@@ -1,0 +1,4 @@
+description = "Run unit tests and typecheck, then summarize failures"
+prompt = """
+Run `npm test` and then `npm run typecheck`. If anything fails, list failing tests / TypeScript errors with file:line, explain the likely cause and propose a fix (don't apply unless asked).
+"""

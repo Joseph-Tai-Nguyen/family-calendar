@@ -1,0 +1,34 @@
+{
+  // Cloudflare Workers config. Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "family-calendar",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2025-09-01",
+  "observability": { "enabled": true },
+
+  // The Vite build (dist/client) is served as static assets. Only API, auth and
+  // calendar-feed routes run the Worker first; everything else is the SPA.
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/auth/*", "/ics/*"]
+  },
+
+  // Sessions, encrypted Google refresh tokens and calendar-feed tokens.
+  // Create with: npx wrangler kv namespace create KV  -> paste the id below.
+  "kv_namespaces": [{ "binding": "KV", "id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID" }],
+
+  "vars": {
+    // Public origin of the app. Used to build the OAuth redirect URI (<APP_URL>/auth/callback).
+    // Local dev goes through the Vite proxy, so it is the Vite origin.
+    "APP_URL": "http://localhost:5173",
+    "SPREADSHEET_TITLE": "Family Calendar Data"
+  }
+
+  // Secrets (set with `npx wrangler secret put <NAME>`; for local dev put them in .dev.vars):
+  //   GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, TOKEN_ENCRYPTION_KEY
+  //
+  // Production example:
+  // "env": { "production": { "vars": { "APP_URL": "https://family-calendar.<you>.workers.dev" } } }
+}

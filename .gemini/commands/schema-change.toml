@@ -1,0 +1,5 @@
+description = "Safely add a field to the Sheet/xlsx schema"
+prompt = """
+Add a column for: {{args}}
+Follow AGENTS.md "Schema changes": append at the END of TABLES[table] in src/shared/schema.ts; update model.ts types, toTables, fromTables (tolerate a missing column), UI, a round-trip test and docs/data-model.md. Run `npm test && npm run typecheck`.
+"""
